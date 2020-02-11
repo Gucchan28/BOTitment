@@ -49,6 +49,7 @@ class Recruitment(commands.Cog):
                         embed.add_field(name=f'あと{cnt}人 募集中\n', value='\n'.join(reaction_member), inline=True)
                         embed.add_field(name=f'制限時間は{time}分です！\n', value=';p', inline=True)
                         await msg.edit(embed=embed)
+                        await msg.clear_reactions()
                         finish = discord.Embed(title=about,color=0xff8000)
                         finish.add_field(name='人数が集まりました！', value='\n'.join(reaction_member), inline=True)
                         await ctx.send(embed=finish)
