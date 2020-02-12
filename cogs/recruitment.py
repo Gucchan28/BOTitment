@@ -33,7 +33,9 @@ class Recruitment(commands.Cog):
                 reaction, user = await self.bot.wait_for('reaction_add', timeout=time*60, check=check)
             except asyncio.TimeoutError:
                 await msg.clear_reactions()
-                await ctx.send('時間になりました！人は集まったかな？')
+                finish = discord.Embed(title=about.split('@')[0],color=0xff8000)
+                finish.add_field(name='時間になりました！', value='\n'.join(reaction_member), inline=True)
+                await ctx.send(embed=finish)
                 break
             else:
                 if str(reaction.emoji) == '⏫':
