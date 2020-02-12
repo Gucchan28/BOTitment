@@ -39,18 +39,18 @@ class Recruitment(commands.Cog):
                 if str(reaction.emoji) == '⏫':
                     reaction_member.append(user.name)
                     cnt -= 1
-                    embed = discord.Embed(title=about,color=0xff8000)
+                    embed = discord.Embed(title=about.split('@')[0],color=0xff8000)
                     embed.add_field(name=f'あと{cnt}人 募集中\n', value='\n'.join(reaction_member), inline=True)
                     embed.add_field(name=f'制限時間は{time}分です！\n', value=';p', inline=True)
                     await msg.edit(embed=embed)
 
                     if cnt == 0:
-                        embed = discord.Embed(title=about,color=0xff8000)
+                        embed = discord.Embed(title=about.split('@')[0],color=0xff8000)
                         embed.add_field(name=f'あと{cnt}人 募集中\n', value='\n'.join(reaction_member), inline=True)
                         embed.add_field(name=f'制限時間は{time}分です！\n', value=';p', inline=True)
                         await msg.edit(embed=embed)
                         await msg.clear_reactions()
-                        finish = discord.Embed(title=about,color=0xff8000)
+                        finish = discord.Embed(title=about.split('@')[0],color=0xff8000)
                         finish.add_field(name='人数が集まりました！', value='\n'.join(reaction_member), inline=True)
                         await ctx.send(embed=finish)
                 
@@ -58,7 +58,7 @@ class Recruitment(commands.Cog):
                     if user.name in reaction_member:
                         reaction_member.remove(user.name)
                         cnt += 1
-                        embed = discord.Embed(title=about,color=0xff8000)
+                        embed = discord.Embed(title=about.split('@')[0],color=0xff8000)
                         embed.add_field(name=f'あと{cnt}人 募集中\n', value='\n'.join(reaction_member), inline=True)
                         embed.add_field(name=f'制限時間は{time}分です！\n', value=';p', inline=True)
                         await msg.edit(embed=embed)
